@@ -1,0 +1,31 @@
+.Button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 15px;
+  right: 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1440px) {
+  .Button {
+    top: 25px;
+    right: 100px;
+  }
+}
+
+.Button svg {
+  fill: #1d93ca;
+}
+
+.Button:hover svg,
+.Button:focus svg,
+.Button:active svg {
+  transition: fill 200ms linear;
+  fill: #9acd32;
+  outline: none;
+}

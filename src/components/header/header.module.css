@@ -1,0 +1,22 @@
+.Container {
+  padding-top: 92px;
+  padding-bottom: 30px;
+  position: relative;
+}
+.Container svg {
+  display: block;
+  margin: 0 auto;
+  width: 312px;
+  height: 104px;
+}
+
+@media screen and (min-width: 1440px) {
+  .Container {
+    padding-top: 86px;
+    padding-bottom: 10px;
+  }
+  .Container svg {
+    width: 600px;
+    height: 200px;
+  }
+}
