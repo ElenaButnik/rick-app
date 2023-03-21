@@ -5,7 +5,7 @@ import Main from "./pages/Main/Main";
 import { themes } from "./styles";
 import { GlobalStyle } from "./styles/globalStyles";
 import { ThemeContext, themesValue } from "./context/themeContext";
-
+import { CharacterItem } from "./pages/CharacterItem/CharacterItem";
 import "./App.css";
 
 const isDark = matchMedia("(prefers-color-scheme: dark)").matches;
@@ -34,6 +34,7 @@ function App() {
           <GlobalStyle />
           <Routes>
             <Route exact path="/" element={<Main />} />
+            <Route path="/:id" element={<CharacterItem />} />
           </Routes>{" "}
         </ThemeProvider>
       </ThemeContext.Provider>

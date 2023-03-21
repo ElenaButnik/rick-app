@@ -15,11 +15,14 @@ input:hover {
   border-color: #1d93ca;
 }
 .Form {
-  margin: 0 auto;
-  padding: 10px;
+  margin-bottom: 33px;
 }
 
 .CastomInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   width: 312px;
   position: relative;
   margin: 0 auto;
@@ -35,16 +38,12 @@ input:hover {
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.5);
 }
-
-/*.CastomInput:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 15px;
-  margin: auto 0;
-  width: 24px;
-  height: 24px;
-  background: url("../../images/icon-form.svg") no-repeat;
-  background-size: cover;
-}*/
+@media screen and (min-width: 1440px) {
+  input {
+    width: 1020px;
+  }
+  .Icon {
+    left: -340px;
+    top: 14px;
+  }
+}

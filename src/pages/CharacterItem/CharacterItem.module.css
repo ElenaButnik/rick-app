@@ -1,0 +1,115 @@
+.Container {
+  padding: 25px 32px 85px 24px;
+}
+
+.Button {
+  display: flex;
+  align-items: center;
+  padding-bottom: 78px;
+  cursor: pointer;
+}
+
+.Button h3 {
+  padding-left: 16px;
+  text-transform: uppercase;
+  font-family: "Karla";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.24;
+}
+.Section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Img {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  margin-bottom: 34px;
+  border: 5px solid #f2f2f7;
+  border-radius: 150px;
+}
+
+.Title {
+  padding-bottom: 34.47px;
+  font-size: 32px;
+  line-height: 1.19;
+  font-weight: 400;
+}
+
+.Info {
+  align-self: flex-start;
+  padding-bottom: 16px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.15px;
+  color: #8e8e93;
+}
+
+.List {
+  display: flex;
+  flex-direction: column;
+}
+.About {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.Link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 16px;
+  padding-top: 9px;
+}
+.Link::after {
+  display: block;
+  content: "";
+  width: 298px;
+  height: 1px;
+  background: rgba(33, 33, 33, 0.08);
+}
+.Item {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.Itm {
+  padding-bottom: 11px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 1.42;
+  color: #6e798c;
+}
+
+@media screen and (min-width: 1440px) {
+  .Container {
+    padding: 23px 0 142px 54px;
+  }
+  .Button {
+    padding-bottom: 32px;
+  }
+  .Img {
+    width: 300px;
+    margin-bottom: 16px;
+  }
+  .Title {
+    padding-bottom: 48px;
+    font-size: 48px;
+    line-height: 1.17;
+  }
+  .Info {
+    padding-bottom: 48px;
+    align-self: center;
+  }
+  .About {
+    margin: 0 auto;
+    width: 413px;
+  }
+  .Link::after {
+    width: 395px;
+  }
+}

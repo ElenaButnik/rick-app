@@ -1,0 +1,51 @@
+.List {
+  display: grid;
+  grid-template-columns: 312px, 1fr;
+  justify-items: center;
+  justify-content: center;
+}
+
+.Item {
+  margin-bottom: 32px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+  overflow: hidden;
+  background-size: cover;
+  background-color: #ffffff;
+}
+
+.Img {
+  min-width: 100%;
+  width: 240px;
+  height: 70%;
+  background-size: contain;
+  object-fit: cover;
+}
+
+.Title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.Specie {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.About {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 16px;
+  text-align: left;
+}
+
+@media screen and (min-width: 1440px) {
+  .List {
+    grid-template-columns: 240px 240px 240px 240px;
+    gap: 20px;
+  }
+}
