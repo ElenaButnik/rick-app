@@ -9,14 +9,20 @@
   width: 312px;
   height: 104px;
 }
-
+.Heroy {
+  margin: 0 auto;
+  width: 312px;
+  height: 104px;
+  background-image: url(../../images/Heroy-m.jpg);
+}
 @media screen and (min-width: 1440px) {
   .Container {
     padding-top: 86px;
     padding-bottom: 10px;
   }
-  .Container svg {
+  .Heroy {
     width: 600px;
     height: 200px;
+    background-image: url(../../images/Heroy.jpg);
   }
 }

@@ -62,7 +62,9 @@ function App() {
       <ThemeContext.Provider value={{ themeSelect, toggleTheme }}>
         <ThemeProvider theme={themes[themeSelect]}>
           <GlobalStyle />
+
           <Navbar />
+
           {user ? (
             <Routes>
               {" "}
