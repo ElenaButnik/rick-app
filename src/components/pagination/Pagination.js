@@ -1,53 +1,47 @@
-import { useEffect, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams, Link } from "react-router-dom";
-import { getPage } from "../../redux/Pagination/selectors";
-import { getThunkDataPage } from "../../redux/Pagination/thunks";
-import { setCurrentPage } from "../../redux/CharacterList/reducers";
-import { CharatersList } from "../charatersList/charactersList";
-import { FetchPages, FetchCharacters } from "../../services/API";
+import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
+import { getPages } from "../../redux/CharacterList/selectors";
+import s from "./Pagination.module.css";
 
-import { createPages } from "../utils/pagesCreator";
-import { getThunkData } from "../../redux/CharacterList/thunks";
-
-export const Pagination = () => {
-  const dispatch = useDispatch();
-  const pages = useSelector(getPage);
-
-  const pageArr = Array.from({ length: pages }, (v, k) => k);
+export const Pagination = ({ onClickPage }) => {
+  const pages = useSelector(getPages);
+  const pageArr = Array.from({ length: pages }, (v, k) => k + 1);
   const [searchParams, setSearchParams] = useSearchParams();
-  const queryParams = Object.fromEntries([...searchParams]);
-  /// console.log(pageArr);
-
-  useEffect(
-    (page) => {
-      dispatch(getThunkDataPage(page));
-    },
-    [dispatch]
-  );
-
-  const onClickPage = useCallback(
-    (page) => {
-      FetchPages(page);
-
-      // dispatch(setCurrentPage(page));
-    },
-    [dispatch]
-  );
+  const currentPage = Number(searchParams.get("page") || 1);
+  const lastPage = pageArr[pageArr.length - 1];
 
   return (
-    <>
+    <div className={s.Container}>
+      {" "}
       <ul className="pages">
-        {pageArr.map((page, index) => (
-          <li
-            key={index}
-            /* className={currentPage === page ? 'currentPage' : 'page'}*/
-            onClick={() => onClickPage(page)}
-          >
-            {page + 1}{" "}
-          </li>
-        ))}
+        {pageArr
+          .map((page, index) => (
+            <li
+              key={index}
+              className={currentPage === page ? "currentPage" : "page"}
+              onClick={() => onClickPage(page)}
+            >
+              {page}{" "}
+            </li>
+          ))
+          .slice(0, 15)}
       </ul>
-    </>
+      {currentPage === 1 ? null : (
+        <button
+          onClick={() => onClickPage(currentPage - 1)}
+          className="double-border-button"
+        >
+          Prev Page
+        </button>
+      )}
+      {currentPage !== lastPage ? (
+        <button
+          onClick={() => onClickPage(currentPage + 1)}
+          className="double-border-button"
+        >
+          Next Page
+        </button>
+      ) : null}
+    </div>
   );
 };

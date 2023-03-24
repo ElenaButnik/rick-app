@@ -9,20 +9,21 @@ export const itemSlice = createSlice({
     error: null,
   },
 
-  extraReducers: {
-    [getThunkDataItem.pending]: (state) => {
-      state.loading = true;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getThunkDataItem.pending, (state) => {
+        state.loading = true;
+      })
 
-    [getThunkDataItem.fulfilled]: (state, action) => {
-      state.item = action.payload;
-      state.loading = false;
-    },
+      .addCase(getThunkDataItem.fulfilled, (state, action) => {
+        state.item = action.payload;
+        state.loading = false;
+      })
 
-    [getThunkDataItem.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
+      .addCase(getThunkDataItem.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 

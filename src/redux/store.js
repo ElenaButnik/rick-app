@@ -12,13 +12,11 @@ import {
 import logger from "redux-logger";
 import characterListSlice from "./CharacterList/reducers";
 import itemSlice from "./CharacterItem/reducers";
-import pageSlice from "./Pagination/reducers";
 
 export const store = configureStore({
   reducer: {
     characterList: characterListSlice,
     characterItem: itemSlice,
-    page: pageSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -3,11 +3,12 @@ import { FetchCharacters } from "../../services/API";
 
 export const getThunkData = createAsyncThunk(
   "getCharacterList",
-  async (_, { rejectWithValue }) => {
+  async (params, { rejectWithValue }) => {
     try {
-      const { data } = await FetchCharacters();
+      const { data } = await FetchCharacters(params);
       return data;
     } catch (error) {
+      alert("We can't fetch characters with such name");
       return rejectWithValue(error);
     }
   }

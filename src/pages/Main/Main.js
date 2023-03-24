@@ -1,7 +1,6 @@
 import { CharatersList } from "../../components/charatersList/charactersList";
 import { Form } from "../../components/form/Form";
 import { Header } from "../../components/header/Header";
-import { Pagination } from "../../components/pagination/Pagination";
 import s from "./Main.module.css";
 
 const Main = () => {

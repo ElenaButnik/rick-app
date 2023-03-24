@@ -1,0 +1,14 @@
+.Container {
+  padding-bottom: 25px;
+}
+.Container button {
+  cursor: pointer;
+}
+
+.Item:not(:last-of-type) {
+  padding-right: 10px;
+}
+
+.Btn:not(:last-of-type) {
+  margin-right: 10px;
+}

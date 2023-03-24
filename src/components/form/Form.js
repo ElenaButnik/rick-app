@@ -1,80 +1,40 @@
-import { useState, useEffect } from "react";
+import { useCallback } from "react";
 import { DebounceInput } from "react-debounce-input";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { ReactComponent as SearchIcon } from "../../images/icon-form.svg";
-import { FetchByName } from "../../services/API";
+import { setFilterByName } from "../../redux/CharacterList/reducers";
 import s from "./Form.module.css";
 
 export const Form = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [searchValue, setSearchValue] = useState("");
-  const [name, setName] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const dispatch = useDispatch();
+  const queryParams = Object.fromEntries([...searchParams]);
+  console.log(queryParams);
 
-  const searchURL = new URLSearchParams(location.search).get("query") ?? "";
-
-  useEffect(() => {
-    if (!searchValue) {
-      return;
-    }
-
-    FetchByName(searchValue)
-      .then((data) => {
-        if (data.length === 0) {
-          alert("Please try again");
-          return;
-        }
-        setName(data);
-      })
-      .catch((error) => alert("Please try one more time"));
-  }, [searchValue]);
-
-  useEffect(() => {
-    if (searchURL === "") {
-      return;
-    }
-    setSearchValue(searchURL);
-  }, [searchURL]);
-
-  const setHistory = (searchValue) => {
-    navigate.push({
-      ...location,
-      search: `query=${searchValue}`,
-    });
-  };
-
-  const onSubmit = (searchValue) => {
-    setSearchValue(searchValue);
-    setHistory(searchValue);
-  };
-
-  const handleNameChange = (event) => {
-    setSearchValue(event.currentTarget.value.toLowerCase());
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (searchValue.trim() === "") {
-      alert("Please enter your query");
-      return;
-    }
-    onSubmit(searchValue);
-    setSearchValue("");
-  };
+  const filterByName = useCallback(
+    (name) => {
+      dispatch(setFilterByName(name));
+      setSearchParams({ ...queryParams, name });
+    },
+    [dispatch, setSearchParams, queryParams]
+  );
 
   return (
-    <form className={s.Form} onSubmit={handleSubmit}>
+    <form className={s.Form}>
       <div className={s.CastomInput}>
-        <SearchIcon className={s.Icon} onClick={handleSubmit} />
-        <input
+        <SearchIcon className={s.Icon} />
+        <DebounceInput
           placeholder="Filter by name..."
           className={s.Input}
           type="text"
           autoComplete="off"
           autoFocus
-          value={searchValue}
-          onChange={handleNameChange}
+          value={searchParams.get("name")}
+          onChange={(e) => filterByName(e.target.value)}
+          debounceTimeout={600}
+          minLength={1}
+          maxLength={10}
         />
       </div>
     </form>
